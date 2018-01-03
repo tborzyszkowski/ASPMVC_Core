@@ -69,7 +69,7 @@ namespace MvcMovie.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Title,ReleaseDate,Genre,Price")] Movie movie)
+        public async Task<IActionResult> Create([Bind("ID,Title,ReleaseDate,Genre,Price,Rating")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -101,7 +101,7 @@ namespace MvcMovie.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,ReleaseDate,Genre,Price")] Movie movie)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,ReleaseDate,Genre,Price,Rating")] Movie movie)
         {
             if (id != movie.ID)
             {
@@ -163,6 +163,29 @@ namespace MvcMovie.Controllers
         private bool MovieExists(int id)
         {
             return _context.Movie.Any(e => e.ID == id);
+        }
+
+        [AcceptVerbs("Get", "Post")]
+        public async Task<IActionResult> VerifyRating(string rating)
+        {
+            var movie = await _context.Movie
+                .FirstOrDefaultAsync(m => m.Rating.Equals(rating));
+            if (movie == null)
+                return Json(true);
+            else
+                return Json($"Rating {rating} is already in use.");
+        }
+
+        [AcceptVerbs("Get", "Post")]
+        public async Task<IActionResult> VerifyTitle(string title, DateTime releaseDate)
+        {
+            var movie = await _context.Movie
+                .FirstOrDefaultAsync(m => m.Title.Equals(title) && 
+                                            m.ReleaseDate.Year == releaseDate.Year);
+            if (movie == null)
+                return Json(true);
+            else
+                return Json($"Movie {title} from year {releaseDate.Year} already exists.");
         }
     }
 }
