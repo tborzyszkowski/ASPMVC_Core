@@ -1,0 +1,84 @@
+﻿
+@{
+    ViewData["Title"] = "Sample";
+}
+
+<h2>Sample</h2>
+@* ----------------------------------------------*@
+<p>@@Username</p>
+
+<a href="mailto:Support@contoso.com">Support@contoso.com</a>
+
+@* ----------------------------------------------*@
+<h3>Implicit Razor expressions</h3>
+
+<p>@DateTime.Now</p>
+<p>@DateTime.IsLeapYear(2016)</p>
+
+
+@* ----------------------------------------------*@
+<h3>Explicit  Razor expressions</h3>
+
+<p>Last week this time: @(DateTime.Now - TimeSpan.FromDays(7))</p>
+<p>Last week: @DateTime.Now - TimeSpan.FromDays(7)</p>
+
+@{ var john = new Human { Name = "John", YoB = 1980 }; }
+<p>Human@(john.Name)@(john.YoB)</p>
+
+
+@* ----------------------------------------------*@
+<h3>Expression encoding</h3>
+@("<span>Hello World</span>")
+@Html.Raw("<span>Hello World</span>")
+
+<h3>Transitions</h3>
+@for (var i = 0; i < 4; i++)
+{
+    <text>John age for @i  years: @(DateTime.Now.Year - john.YoB + i)<br /></text>
+}
+<br />
+@for (var i = 0; i < 4; i++)
+{
+    @:John age for @i  years: @(DateTime.Now.Year - john.YoB + i)<br />
+}
+
+
+@* ----------------------------------------------*@
+<h3>Control Structures</h3>
+@if (john.YoB % 2 == 0)
+{
+    <p>Even.</p>
+}
+else
+{
+    <p>Odd.</p>
+}
+
+
+@{
+    var people = new Human[] {
+new Human { Name = "Zenek", YoB = 1985 },
+new Human { Name = "Kuba",  YoB = 1990 },
+new Human { Name = "Ania",  YoB = 1995 }
+};
+}
+@foreach (var person in people)
+{
+    <p>Name: @person.Name,  YoB: @person.YoB</p>
+}
+
+@functions{
+    int silnia(int n)
+    {
+        int i = 0;
+        int res = 1;
+        while (i < n) { res *= (++i); }
+        return res;
+    }
+}
+
+
+@section MathContent{
+    <h3>Section</h3>
+    <p>Silnia: @silnia(5)</p>
+}
