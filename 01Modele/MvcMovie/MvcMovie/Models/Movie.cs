@@ -38,7 +38,11 @@ namespace MvcMovie.Models
         [DataType(DataType.Currency)]
         public decimal Price { get; set; }
 
-        [Remote(action: "VerifyRating", controller: "Movies", ErrorMessage = "Use a new rating")]
+        [Remote(
+            action: "VerifyRating", 
+            controller: "Movies", 
+            ErrorMessage = "Use a new rating"
+        )]
         public string Rating { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext) {

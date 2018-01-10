@@ -7,7 +7,6 @@
 @* ----------------------------------------------*@
 <p>@@Username</p>
 
-<a href="mailto:Support@contoso.com">Support@contoso.com</a>
 
 @* ----------------------------------------------*@
 <h3>Implicit Razor expressions</h3>
@@ -24,6 +23,7 @@
 
 @{ var john = new Human { Name = "John", YoB = 1980 }; }
 <p>Human@(john.Name)@(john.YoB)</p>
+<p>Human@john.Name@john.YoB</p>
 
 
 @* ----------------------------------------------*@
