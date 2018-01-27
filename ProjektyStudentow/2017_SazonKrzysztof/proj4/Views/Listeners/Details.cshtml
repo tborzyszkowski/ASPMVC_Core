@@ -1,0 +1,44 @@
+﻿@model proj4.Models.Listener
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Listener</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DateOfBirth)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+        <dd>
+            <number>@Html.DisplayFor(model => model.Age)</number>
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EmailAddress)
+        </dd>
+    </dl>
+</div>
+
+@Html.Partial("SomePartialView", Model.Name)
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ListenerID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

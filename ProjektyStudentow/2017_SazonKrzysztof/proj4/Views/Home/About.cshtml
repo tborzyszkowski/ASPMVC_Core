@@ -1,0 +1,31 @@
+﻿@model IEnumerable<proj4.Models.MusicViewModels.BandGenreGroup>
+@{
+    ViewData["Title"] = "Generate statistics";
+}
+<h2>@ViewData["Title"]</h2>
+@*<h3>@Model.Message</h3>*@
+
+<table>
+    <tr>
+        <th>
+            Genre 
+        </th>
+        <th>
+            Count
+        </th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Genre)
+            </td>
+            <td>
+                @item.GenreCount
+            </td>
+        </tr>
+
+    }
+</table>
+
+<p>Use this area to provide additional information.</p>

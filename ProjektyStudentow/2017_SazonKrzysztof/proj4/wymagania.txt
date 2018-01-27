@@ -1,0 +1,39 @@
+﻿Modele: 35%
+
+    atrybuty dotyczące ograniczeń danych (własne walidatory): 15%
+		najlepsze w modelu dla Band
+    atrybuty dotyczące widoków: 10%
+		?? np w indexie dla Listner
+    minimum 2 tabele z relacją jeden-do-wiele: 10%
+		nom
+
+Kontrolery: 30%
+
+    powiązanie uprawnień zalogowanych userów z kontrolerami (atrybuty wykorzystujące role): 10%
+		w create do BandController
+    logowanie i przynależność do ról: 10%
+		nom
+    LINQ: 10%
+		index w BandsController
+
+Widoki: 35%
+
+    widoki pisane w Razor + przekazywanie danych do widoku: 7%
+		np przekazywanie w index w homeie
+    umiejętność + przykład ręcznego rozszerzenia widoku: 7%
+		?? np w viewsie index dla Listeners
+    widoki częściowe + komunikacja z widokiem podstawowym: 7%
+		w detialsach do band i listener
+    zastosowanie podstawowych helperów + definicja własnych: 7%
+		w modelu dla Band
+    zastosowanie layoutów: 7%
+		nom, inny w contact
+
+Extra: 15%
+
+    modyfikacja routingu RESTowego: 5%
+		w statup i w kontrolerze Band Details
+    zarządzanie stanem aplikacji: 5%
+		na stronie głównej
+    umieszczenie strony na Azure: 5%
+		https://ug-proj4.azurewebsites.net/

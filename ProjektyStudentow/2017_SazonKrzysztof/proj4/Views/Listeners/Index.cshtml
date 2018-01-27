@@ -1,0 +1,96 @@
+﻿@model proj4.Models.MusicViewModels.RatingIndexData
+
+@{
+    ViewData["Title"] = "Listeners";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Date of birth</th>
+            <th>Email address</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Listeners) {
+            string selectedRow = "";
+            if (item.ListenerID == (int?)ViewData["ListenerID"]) {
+                selectedRow = "success";
+            }
+            <tr class="@selectedRow">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmailAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    <a asp-action="Index" asp-route-id="@item.ListenerID">Select</a> |
+                    <a asp-action="Edit" asp-route-id="@item.ListenerID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ListenerID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ListenerID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (Model.BandsListeners != null) {
+    <h3>Bands listened to by @ViewData["ListenerID"]</h3>
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>Band name</th>
+            <th>City of origin</th>
+            <th>Rating</th>
+        </tr>
+
+        @foreach (var item in Model.BandsListeners) {
+            string selectedRow = "";
+            if (item.BandID == ViewData["BandId"]) {
+                selectedRow = "success";
+            }
+            <tr class="@selectedRow">
+                <td>
+                    @Html.ActionLink("Select", "Index", new { bandId = item.BandID })
+                </td>
+                <td>
+                    @item.BandID
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Band.City)
+                </td>
+                <td>
+                    @item.Note
+                </td>
+            </tr>
+        }
+    </table>
+
+    //@if (Model.Bands != null) {
+    @if (ViewData["BandId"] != null) {
+        <h3>Band gigs</h3>
+
+        @if (!Model.Tours.Any()) {
+            @:<p>Band has no gigs</p>
+        } else {
+            @foreach (var item in Model.Tours) {
+                <p>@item.City</p>
+            }
+        }
+    }
+}
