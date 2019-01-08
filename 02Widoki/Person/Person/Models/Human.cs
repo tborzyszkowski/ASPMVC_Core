@@ -10,5 +10,6 @@ namespace Person.Models
         public int ID { get; set; }
         public string Name { get; set; }
         public int YoB { get; set; }
+        public Address Address { get; set; }
     }
 }

@@ -28,3 +28,16 @@
     <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>
+
+<hr />
+<human-information info=@Model />
+
+<div condition="@(Model.YoB > 2001)">
+    <p>
+        Almost adult
+    </p>
+</div>
+
+@{ var adres = new Address() { Street = "Morska", Town = "Gdynia", Code = "123456" };}
+
+@Html.Partial("_Address", adres)

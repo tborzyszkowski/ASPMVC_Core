@@ -23,7 +23,7 @@ namespace MvcMovie.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Release Date")]
         [DataType(DataType.Date)]
-        [OlderMovie(1960)]
+        [OlderMovie(1970)]
         [Remote(
             action: "VerifyTitle",
             controller: "Movies",

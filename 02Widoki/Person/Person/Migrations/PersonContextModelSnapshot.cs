@@ -20,10 +20,28 @@ namespace Person.Migrations
                 .HasAnnotation("ProductVersion", "2.0.1-rtm-125")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Person.Models.Address", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Code");
+
+                    b.Property<string>("Street");
+
+                    b.Property<string>("Town");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Address");
+                });
+
             modelBuilder.Entity("Person.Models.Human", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<int?>("AddressID");
 
                     b.Property<string>("Name");
 
@@ -31,7 +49,16 @@ namespace Person.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("AddressID");
+
                     b.ToTable("Human");
+                });
+
+            modelBuilder.Entity("Person.Models.Human", b =>
+                {
+                    b.HasOne("Person.Models.Address", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressID");
                 });
 #pragma warning restore 612, 618
         }
