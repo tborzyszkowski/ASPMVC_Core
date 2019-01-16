@@ -1,5 +1,5 @@
 # Homeworkapp
-University project on ASP.NET Framework (part-time BSc studies of Computer Science on University of Gdansk - 2018/2019 winter semester) <br><br>
+University project created in ASP.NET Framework (part-time BSc studies of Computer Science on University of Gdansk - 2018/2019 winter semester) <br><br>
 **Author:** Janusz Schőnrock <br>
 **Github:** https://github.com/johnnyrock92 <br>
 **Linkedin:** www.linkedin.com/in/janusz-schonrock/
