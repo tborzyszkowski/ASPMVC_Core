@@ -1,0 +1,19 @@
+﻿<div class="panel">
+    <div class="panel-heading">
+        <h4>Utwórz nową rolę</h4>
+    </div>
+    <div class="panel-body">
+        @using (Html.BeginForm("Create", "Roles", new { @class = "form-horizontal" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+        <div>
+            <label>Nazwa roli:</label>@Html.TextBox("RoleName", null, new { @class = "form-control" })
+            
+            <button class="btn btn-group-sm btn-primary btn-block" type="submit">Zapisz</button>
+        </div>
+        }
+
+    </div> <!--End Panel Body-->
+</div> <!--End Panel-->

@@ -1,0 +1,29 @@
+﻿<div class="panel">
+    <div class="panel-heading">
+        <h4>Role użytkownika</h4>
+    </div>
+    <div class="panel-body">
+        @using (Html.BeginForm("GetRoles", "Roles"))
+        {
+            @Html.AntiForgeryToken()
+        <p>
+            <label>Użytkownik:</label>@Html.DropDownList("UserName", (IEnumerable<SelectListItem>)ViewBag.Users, "Wybierz użytkownika", new { @class = "form-control" })
+            @*<input type="submit" value="Pokaż role użytkownika" class="btn-primary" />*@
+            <button class="btn btn-group-sm btn-primary btn-block" type="submit">Pokaż role użytkownika</button>
+        </p>
+        }
+
+        @if (ViewBag.RolesForThisUser != null)
+        {
+            <div class="alert-info">
+                <strong>Role użytkownika:</strong>
+                <ol>
+                    @foreach (string rola in ViewBag.RolesForThisUser)
+                    {
+                        <li>@rola</li>
+                    }
+                </ol>
+            </div>
+        }
+    </div> <!-- End Panel Body-->
+</div> <!-- End Panel -->

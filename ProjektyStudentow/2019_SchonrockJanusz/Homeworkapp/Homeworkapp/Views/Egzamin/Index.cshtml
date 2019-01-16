@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Homeworkapp.Models.Egzamin>
+
+@{
+    ViewBag.Title = "Edytor egzaminów";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edytor egzaminów</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Przedmiot.Nazwa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Termin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Opis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Url)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Przedmiot.Nazwa)
+        </td>
+        <td>
+            @String.Format("{0:d}", item.Termin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Opis)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Url)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EgzaminID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EgzaminID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EgzaminID })
+        </td>
+    </tr>
+}
+
+</table>

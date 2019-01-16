@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "ManageUserRoles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<div class="row col-md-12">
+    <h1>Menedżer ról</h1>
+    <br />
+</div>*@
+<h2>Menedżer ról</h2>
+
+<div class="row col-sm-12 col-lg-12 col-md-12">
+
+    <div class="col-md-4">
+        @Html.Partial("UtworzRolePartial")
+        @Html.Partial("ListaRolPartial")
+    </div> <!--End First Column-->
+
+    <div class="col-md-4">
+        @Html.Partial("PowiazRolePartial")
+        @Html.Partial("ListaRolUzytkownikaPartial")
+    </div> <!--End Second Column-->
+
+    <div class="col-md-4">
+        @Html.Partial("UsunRoleUzytkownikaPartial")
+    </div> <!--End Second Column-->
+
+</div>  <!--Overall Page Wrapper-->
+
+<div class="alert-info col-sm-12 col-lg-12 col-md-12">
+    @ViewBag.Message
+</div>

@@ -1,0 +1,17 @@
+﻿@model IEnumerable<Homeworkapp.Models.Zadanie>
+@using Homeworkapp.Helpers
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Html.PokazDate((List<Homeworkapp.Models.Zjazd>)ViewBag.Data)
+@*<h2>Details</h2>*@
+@Html.ListaZadan((List<Homeworkapp.Models.Zadanie>)ViewBag.Zadania)
+
+@*<ul>
+        @foreach (var item in Model)
+        {
+
+            <li>@item.Przedmiot.Nazwa | @item.Opis | @item.Url | @item.Termin</li>
+        }
+    </ul>*@

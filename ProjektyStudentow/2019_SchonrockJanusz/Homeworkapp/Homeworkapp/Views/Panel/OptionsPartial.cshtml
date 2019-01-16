@@ -1,0 +1,28 @@
+﻿@using Homeworkapp.Helpers
+
+<div class="row">
+
+        @if (User.IsInRole("Administrator"))
+        {
+ 
+            @Html.PokazOpcje("Menedżer ról", "Index", "Roles")
+
+        }
+        @if (User.IsInRole("Moderator") || User.IsInRole("Administrator"))
+        {
+
+            @Html.PokazOpcje("Edytor przedmiotów", "Index", "Przedmiot")
+            @Html.PokazOpcje("Edytor zjazdów", "Index", "Zjazd")
+            @Html.PokazOpcje("Edytor zadań", "Index", "Zadanie")
+            @Html.PokazOpcje("Edytor kolokwiów", "Index", "Kolokwium")
+            @Html.PokazOpcje("Edytor egzaminów", "Index", "Egzamin")
+
+        }
+
+
+        @Html.PokazOpcje("Lista Zjazdów", "Index", "ListaZjazdow")
+        @Html.PokazOpcje("Lista Zadań", "Index", "ListaZadan", (int)@ViewBag.IloscZadan)
+        @Html.PokazOpcje("Lista Kolokwiów", "Index", "ListaKolokwiow", (int)@ViewBag.IloscKolokwiow)
+        @Html.PokazOpcje("Lista Egzaminów", "Index", "ListaEgzaminow", (int)@ViewBag.IloscEgzaminow)
+
+</div>

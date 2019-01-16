@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Homeworkapp.Models.Egzamin>
+@using Homeworkapp.Helpers
+@{
+    ViewBag.Title = "Lista egzaminów";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista egzaminów <span class="badge">@ViewBag.IloscEgzaminow</span></h2>
+@Html.InfoEgzamin((List<Homeworkapp.Models.Egzamin>)ViewBag.Egzaminy)
