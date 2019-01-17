@@ -1,0 +1,37 @@
+﻿@using Homeworkapp.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Zaloguj";
+}
+
+@*<h2>@ViewBag.Title.</h2>*@
+<div class="container">
+    <div class="jumbotron transparent">
+        @using (Html.BeginForm("Login", "Account", new { ReturnUrl = "/Panel" }, FormMethod.Post, new { @class = "form-signin", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <h2 class="form-signin-heading">Zaloguj się</h2>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @Html.LabelFor(m => m.Email, new { @class = "sr-only" })
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email", @id = "EmailLogin" })
+            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+
+            @Html.LabelFor(m => m.Password, new { @class = "sr-only" })
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Hasło", @id = "HasloLogin" })
+            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+
+            <div class="checkbox">
+                <label>
+                    @Html.CheckBoxFor(m => m.RememberMe) Zapamiętaj mnie
+                </label>
+            </div>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Zaloguj</button>
+        }
+        </div>
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

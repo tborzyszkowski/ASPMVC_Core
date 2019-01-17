@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Homeworkapp.Models.Zjazd>
+@using Homeworkapp.Helpers
+@{
+    ViewBag.Title = "Lista zjazdów";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista zjazdów</h2>
+
+@Html.ListaZjazdow((List<Homeworkapp.Models.Zjazd>)ViewBag.Zjazdy)

@@ -1,0 +1,120 @@
+﻿body {
+    background-color: #E8E8E8;
+}
+
+.navbar-inverse {
+    background-color: #FFBB00 !important;
+
+}
+
+.navbar-brand {
+    color: black !important;
+}
+
+.container-fluid {
+    padding-top: 87px;
+}
+
+h1 {
+    color: black;
+    font-size: 1.7rem;
+}
+
+h2 {
+    color: #676767;
+}
+
+h5 {
+    font-weight: lighter;
+}
+
+p {
+    font-size: 14px;
+    line-height: 1em;
+}
+
+.link {
+    color: #365899;
+}
+
+.date {
+    text-align: center;
+    padding: 0.1em;
+}
+
+.box {
+    /*background-color: grey;*/
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+@media screen and (max-width: 767px) and (orientation: portrait) {
+    .box {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 768px) and (orientation: portrait) {
+    .box {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 1000px) and (orientation: landscape) {
+    .box {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 1001px) {
+    .box {
+        width: 20%;
+    }
+}
+
+.inside {
+    background-color: #FAFAFA;
+    padding: 1em;
+    height: 15em;
+}
+
+    .inside:hover {
+        background-color: rgba(255, 255, 255, 0.966);
+    }
+
+.inside-box {
+    background-color: white;
+    padding: 1em;
+    height: auto;
+    word-wrap: break-word;
+}
+
+a {
+    color: #6A6A6A;
+}
+
+    a:hover {
+        text-decoration: none;
+        color: black;
+    }
+
+.subject {
+    border-bottom: 1px #E8E8E8 solid;
+    margin-bottom: 0.5em;
+}
+
+.deadline {
+    border-top: 1px #E8E8E8 solid;
+    padding-top: 1em;
+}
+/*==================================================
+ * Effect Shadow
+ * ===============================================*/
+.effect {
+    position: relative;
+    -webkit-box-shadow: 0px 0px 17px 2px rgba(0,0,0,0.17);
+    -moz-box-shadow: 0px 0px 17px 2px rgba(0,0,0,0.17);
+    box-shadow: 0px 0px 17px 2px rgba(0,0,0,0.10);
+}

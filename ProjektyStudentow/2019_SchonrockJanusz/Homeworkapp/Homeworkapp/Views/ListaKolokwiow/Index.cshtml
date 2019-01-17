@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Homeworkapp.Models.Kolokwium>
+@using Homeworkapp.Helpers
+@{
+    ViewBag.Title = "Lista kolokwiów";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista kolokwiów <span class="badge">@ViewBag.IloscKolokwiow</span></h2>
+@Html.InfoKolokwium((List<Homeworkapp.Models.Kolokwium>)ViewBag.Kolokwia)

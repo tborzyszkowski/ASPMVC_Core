@@ -1,0 +1,29 @@
+﻿@model Homeworkapp.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Utwórz nowe konto";
+}
+<div class="container">
+    <div class="jumbotron transparent">
+        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-signin", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <h2 class="form-signin-heading">@ViewBag.Title</h2>
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+
+            @Html.LabelFor(m => m.Email, new { @class = "sr-only" })
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email", @id = "EmailRegister" })
+
+            @Html.LabelFor(m => m.Password, new { @class = "sr-only" })
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Hasło", @id = "HasloRegister" })
+
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "sr-only" })
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Potwierdź hasło", @id = "PotwierdzoneHasloRegister" })
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Zarejestruj</button>
+        }
+        </div>
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

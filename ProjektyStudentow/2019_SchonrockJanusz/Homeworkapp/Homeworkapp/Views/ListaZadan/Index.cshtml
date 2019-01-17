@@ -1,0 +1,9 @@
+﻿@model IEnumerable<Homeworkapp.Models.Zadanie>
+@using Homeworkapp.Helpers
+@{
+    ViewBag.Title = "Lista zadań";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista zadań <span class="badge">@ViewBag.IloscZadan</span></h2>
+@Html.ListaZadan((List<Homeworkapp.Models.Zadanie>)ViewBag.Zadania)
