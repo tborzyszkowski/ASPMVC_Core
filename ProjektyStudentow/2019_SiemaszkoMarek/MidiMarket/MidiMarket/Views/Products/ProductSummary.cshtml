@@ -1,0 +1,36 @@
+﻿@*Widok częściowy do wyświetlania Produktu*@
+@model MidiMarket.Models.Product
+@{ 
+    var imagePath = @"/Content/Images/";
+}
+
+<div class="col-sm-3 col-lg-3 col-md-3" style="width: 250px;">
+
+    <div 
+         class="thumbnail" 
+         style="padding-bottom: 15px;"
+         onclick="location.href='@(Url.Action("Details", "Products", new { ProductID = Model.ID }))'"
+         >
+
+        @*Miniaturka*@
+        <div style="width: 80px; height: 80px; margin: 10px auto; background: url(@imagePath@Model.Picture) center no-repeat; background-size: 100%;"></div>
+
+        @*Opis*@
+        <div class="caption">
+            <h4 class="pull-right">@Model.Price.ToString("c")</h4>
+            <h4><a>@Model.Name</a></h4>
+            <p>@Model.Description</p>
+        </div>
+
+        @*Przycisk dodaj*@ 
+        @using (Html.BeginForm("AddToCart", "Cart"))
+        {
+            <div style="text-align: center">
+                @Html.Hidden("id", Model.ID)
+                @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                <input type="submit" class="btn btn-success" value="Dodaj do koszyka" />
+            </div>
+        }
+
+    </div>
+</div>

@@ -1,0 +1,11 @@
+﻿@*widok pozwalający na wyświetlenie liczby produktów w koszyku*@
+
+@model MidiMarket.Models.Cart
+@{
+    int count = Model.Lines.Sum(x => x.Quantity);
+    string print = count == 0 ? "" : $" ({count} szt.)";
+}
+
+<li>
+    @Html.ActionLink("Twój koszyk" + @print, "Index", "Cart")
+</li>

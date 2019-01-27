@@ -1,0 +1,57 @@
+﻿@model MidiMarket.Models.ShippingDetails
+@{
+    ViewBag.Title = "Podsumowanie";
+}
+
+<h2>Dane wysyłkowe</h2>
+
+<p>Proszę podać dane wysyłki!</p>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="form-group">
+        <div class="">
+            @Html.LabelFor(x => x.Name, htmlAttributes: new { @class = "" })
+            @Html.EditorFor(x => x.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(x => x.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="">
+            @Html.LabelFor(x => x.Address, htmlAttributes: new { @class = "" })
+            @Html.EditorFor(x => x.Address, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(x => x.Address, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="">
+            @Html.LabelFor(x => x.City, htmlAttributes: new { @class = "" })
+            @Html.EditorFor(x => x.City, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(x => x.City, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="">
+            @Html.LabelFor(x => x.Zip, htmlAttributes: new { @class = "" })
+            @Html.EditorFor(x => x.Zip, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(x => x.Zip, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="">
+            @Html.LabelFor(x => x.Country, htmlAttributes: new { @class = "" })
+            @Html.EditorFor(x => x.Country, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(x => x.Country, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="text-center">
+        <input class="btn btn-primary" type="submit" value="Zakończ zamówienie" />
+    </div>
+}

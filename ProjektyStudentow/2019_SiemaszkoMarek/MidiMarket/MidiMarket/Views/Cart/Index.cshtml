@@ -1,0 +1,63 @@
+﻿@model MidiMarket.Models.CartIndexViewModel
+@using MidiMarket.Helpers
+@{
+    //var imagePath = @"/Content/Images/";
+    ViewBag.Title = "Zawartość koszyka";
+}
+
+@*<div style="border: 1px solid red;">
+    @{
+        var context = new MidiMarket.DAL.ApplicationDbContext();
+
+        var userlistDB = context.Users;
+        var userlistSort = (from u in userlistDB
+                            orderby u.UserName
+                            select u);
+        foreach (var x in userlistSort)
+        {
+            <p>@x.Id</p>
+            <p>@x.UserName</p>
+        }
+    }
+</div>*@
+
+<h2>Twój koszyk</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th class="text-left">Produkt</th>
+            <th class="text-center">Ilość</th>
+            <th class="text-right">Cena</th>
+            <th class="text-right">Wartość</th>
+            <th class="text-right">Usuń</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.Cart.Lines)
+        {
+            <tr>
+                <td class="text-left">@Html.WstawMiniaturke(line.Product.Picture, new { width = 32 }) &nbsp;&nbsp; @line.Product.Name</td>
+                <td class="text-center">@line.Quantity</td>
+                <td class="text-right">@line.Product.Price.ToString("c")</td>
+                <td class="text-right">@((line.Quantity * line.Product.Price).ToString("c"))</td>
+                <td class="text-center" style="width: 20px;">
+                    @Html.WstawIkone("RemoveFromCart", "Cart", MyHelpers.Icon.iconDelete, new { productID = line.Product.ID }, new { title = "Usuń pozycje" })
+                </td>
+            </tr>}
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="3" class="text-right">Razem:</td>
+            <td class="text-right">
+                @Model.Cart.ComputeTotalValue().ToString("c")
+            </td>
+        </tr>
+    </tfoot>
+</table>
+
+<div class="text-center">
+    <a class="btn btn-primary" href="@Model.ReturnUrl">Kontynuuj zakupy</a>
+    @*<a class="btn btn-primary" href="">Złoż zamówienie&nbsp;</a>*@
+    @Html.ActionLink("Złoż zamówienie", "Checkout", "Orders", null, new { @class = "btn btn-primary" })
+</div>

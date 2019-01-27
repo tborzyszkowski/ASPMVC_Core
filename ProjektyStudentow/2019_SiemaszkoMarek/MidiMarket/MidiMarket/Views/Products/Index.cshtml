@@ -1,0 +1,99 @@
+﻿@*@model IEnumerable<MidiMarket.Models.Product>*@
+@*@model IEnumerable<MidiMarket.Models.PagingInfo>*@
+
+
+@model MidiMarket.Models.ProductsListViewModel
+@using MidiMarket.Helpers
+
+@{
+    ViewBag.Title = "Lista produktow";
+
+    var imagePath = @"/Content/Images/";
+    //var ListProducts = (List<MidiMarket.Models.Product>)ViewBag.Produkty;
+    //var ModelPagingInfo = (MidiMarket.Models.PagingInfo)ViewBag.PagingInfo;
+
+    var ListProducts = Model.Products;
+    var ModelPagingInfo = Model.PagingInfo;
+
+}
+
+<h2>@ViewBag.Title @( Model.CurrentCategory.ToString() == "" ? "" : "/ " + Model.CurrentCategory) :</h2>
+
+@*<p>
+    @Html.ActionLink("Dodaj produkt", "Create")
+</p>*@
+
+@*<table class="table">
+    <tr>
+        <th>
+            Produkt
+        </th>
+        <th>
+            Cena
+        </th>
+        <th>
+            Kategoria
+        </th>
+        <th>
+        </th>
+    </tr>*@
+
+    @*@foreach (var item in ListProducts)
+        {
+            <tr onclick="location.href='@(Url.Action("Details", "Products", new { id = item.ID }))'">
+                <td>
+                    @MyHelpers.WstawObrazek(imagePath + item.Picture) &nbsp;
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                <td>
+                    @Html.ActionLink("Edytuj", "Edit", new { id = item.ID }) |
+                    @Html.ActionLink("Kasuj", "Delete", new { id = item.ID })
+                </td>
+                <td>
+                    @using (Html.BeginForm("AddToCart", "Cart"))
+                    {
+                        <div class="pull-right">
+                            *Html.HiddenFor(x => item.ID)*
+                            @Html.Hidden("id", item.ID)
+                            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                            <input type="submit" class="btn btn-success" value="Dodaj do koszyka" />
+                        </div>
+                    }
+                </td>
+            </tr>
+        }
+</table>
+*@
+
+<div class="row">
+    @foreach (var item in Model.Products)
+    {
+        //Ładowanie widoku częściowego
+
+        @Html.Partial("ProductSummary", item);
+    }
+</div>
+
+
+    @*
+            Tutaj z uzyciem partial view
+            @foreach (var item in Model.Products)
+        {
+            @Html.Partial("ProductSummary", item);
+        }*@
+
+
+    <div class="row text-center col-sm-11">
+        @*Listing 7.23*@
+        @Html.PageLinks(ModelPagingInfo, x => Url.Action("Index", new {
+                                                                        page = x,
+                                                                        category = Model.CurrentCategory
+                                                                    }))
+    </div>
+
