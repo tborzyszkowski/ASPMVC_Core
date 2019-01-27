@@ -1,0 +1,41 @@
+﻿@*@model MidiMarket.Models.Order*@
+
+@using MidiMarket.Models;
+@model IEnumerable<MidiMarket.Models.Order>
+
+@{
+    ViewBag.Title = "Lista zamowien";
+
+    // przekazana prez ViewBag lista rzutowana na liste zawierajaca modele Order
+    var orders = (List<MidiMarket.Models.Order>) ViewBag.Orders;
+}
+
+<h2>Lista zamowien:</h2>
+
+@foreach (var order in orders)
+{
+    <div>
+        uzytkownik: @order.ApplicationUser.UserName<br />
+        data zamowienia:  @order.OrderDate<br />
+        Adres wysyłki:
+        @order.ShipingName 
+        @order.ShipingAddress 
+        @order.ShipingCity 
+        @order.ShipingZip 
+        @order.ShipingCountry 
+
+        <br />
+        Zamówienie:<br />
+        <ul>
+
+        @foreach(OrderItem item in order.OrderItems)
+        {
+            <li>
+                @item.Product.Name : @item.Amount szt x @item.Product.Price.ToString("C");
+            </li>
+        }
+        </ul>
+    </div>
+    <br />
+}
+

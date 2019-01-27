@@ -1,0 +1,22 @@
+﻿@model IQueryable<MidiMarket.Models.Category?>
+
+<br />
+
+@Html.ActionLink("Wszystkie produkty", "Index", "Products", null,
+new { @class = "btn btn-block btn-default btn-lg" })
+
+@foreach (var link in Model)
+{
+
+    @Html.RouteLink( link.ToString(), new {
+            controller = "Products",
+            action = "Index",
+            category = link.ToString(),
+            page = 1
+        },
+        new {
+            @class = "btn btn-block btn-default btn-lg"
+                + (link.ToString() == ViewBag.SelectedCategory ? " btn-primary" : "")
+        }
+    )
+}

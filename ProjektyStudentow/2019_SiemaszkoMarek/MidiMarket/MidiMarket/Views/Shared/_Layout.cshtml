@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title — sklep internetowy</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+
+    @{
+
+        //var user = new MidiMarket.Models.ApplicationUser { UserName = "user1", Email = "mail@user1.pl" };
+        var db = new MidiMarket.DAL.MarketContext();
+        //db.Tests.Add(
+        //    new MidiMarket.Models.Test { ApplicationUser = user }
+        //    );
+        //db.SaveChanges();
+
+        @*foreach (var u in db.Users)
+        {
+            <p>
+            @u.UserName
+            </p>
+        }*@
+
+     }
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("MidiMarket", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Produkty", "Index", "Products")</li>
+                    
+                    @*Wstawienie partial View z przycickiem Koszyk (ilosc)*@
+                    @Html.Action("Summary", "Cart")
+                    
+                    <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Zamówienia", "ListaZamowien", "Orders")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+                @*@Html.RenderAction("", "CalendarControler");*@
+               </div>
+        </div>
+    </div>
+    <div class="container body-content">
+  
+        <div class="row panel">
+            <div id="categories" class="col-xs-3">
+
+                @*Wstawienie helpera generującego liste kategorii*@
+                @Html.Action("Menu", "Nav")
+            </div>
+            <div class="col-xs-9">
+                @RenderBody()
+            </div>
+            <div class="col-xs-11">
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year — MidiMarket ASP.NET</p>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
