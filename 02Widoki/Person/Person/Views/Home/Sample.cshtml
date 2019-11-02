@@ -12,7 +12,7 @@
 <h3>Implicit Razor expressions</h3>
 
 <p>@DateTime.Now</p>
-<p>@DateTime.IsLeapYear(2016)</p>
+<p>@DateTime.IsLeapYear(2019)</p>
 
 
 @* ----------------------------------------------*@
@@ -22,13 +22,14 @@
 <p>Last week: @DateTime.Now - TimeSpan.FromDays(7)</p>
 
 @{ var john = new Human { Name = "John", YoB = 1980 }; }
-<p>Human@(john.Name)@(john.YoB)</p>
-<p>Human@john.Name@john.YoB</p>
+<p>Human @(john.Name) @(john.YoB)</p>
+<p>Human @john.Name @john.YoB</p>
 
 
 @* ----------------------------------------------*@
 <h3>Expression encoding</h3>
 @("<span>Hello World</span>")
+
 @Html.Raw("<span>Hello World</span>")
 
 <h3>Transitions</h3>
